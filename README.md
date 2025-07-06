@@ -4,7 +4,7 @@ A machine learning project focused on decision tree algorithms and implementatio
 
 ## Overview
 
-This project is what hapens when you're scared of AI taking your job but no one is hiring C++ devs.
+This project is what happens when you're scared of AI taking your job but no one is hiring C++ devs.
 
 ## Features
 
