@@ -12,7 +12,7 @@ This project is what happens when you're scared of AI taking your job but no one
 - ~~Data preprocessing and visualization~~
 - ~~Model training and evaluation~~
 - ~~Performance metrics analysis~~
-- goal is to fuck around and find out
+- goal is to ```bleep``` around and find out
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ yeah no shit
 ### Usage
 
 ```bash
-kinda fucking obvious. just run python on the main file.
+kinda obvious. just run python on the main file.
 ```
 
 ## Contributing
