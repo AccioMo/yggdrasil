@@ -100,12 +100,20 @@ class Tree:
 		"""train the decision tree on the data"""
 		self.root = self._build_tree(X, y)
 
+	def _traverse_tree(self, node, sample, actual):
+		if node is None:
+			return None
+		if node.decision is not None:
+			print(f"predicted: {node.decision}, actual: {actual}")
+			return node.decision
+		if sample[node.feature] <= node.threshold:
+			return self._traverse_tree(node.left, sample, actual)
+		else:
+			return self._traverse_tree(node.right, sample, actual)
 
-df = pd.read_csv('Housing_Data.csv')
-
-yggdrasil = Tree()
-
-yggdrasil.fit(df.iloc[:, 1:-1], df.iloc[:, -1:])
+	def predict(self, X, y):
+		"""predict the class for a given input"""
+		return X.apply(lambda row: self._traverse_tree(self.root, row, y.loc[row.name, "prefarea"]), axis=1)
 
 def print_tree(node):
 	"""tree printer using the rich library for better formatting"""
@@ -145,5 +153,13 @@ def print_tree(node):
 	
 	rich_tree = build_rich_tree(node)
 	console.print(rich_tree)
+
+df = pd.read_csv('output.csv')
+# df = df.sample(frac=1).reset_index(drop=True)
+# df.to_csv('output.csv', index=False)
+
+yggdrasil = Tree()
+yggdrasil.fit(df.iloc[:400, 1:-1], df.iloc[:400, -1:])
+yggdrasil.predict(df.iloc[400:, 1:-1], df.iloc[400:, -1:])
 
 print_tree(yggdrasil.root)
